@@ -194,8 +194,6 @@ APP_LOGO = os.getenv("APP_LOGO")
 
 SENTRY_DSN = os.getenv("SENTRY_DSN")
 sentry_sdk.init(
-    dsn="https://1f4f9bd22ceb69b9af531a1a73fd9b4a@o4511329857241088.ingest.us.sentry.io/4511488226426880",
-    # Add data like request headers and IP for users,
-    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    dsn=SENTRY_DSN,
     send_default_pii=True,
 )
