@@ -5,11 +5,11 @@ from core.models import BaseModel
 class Role(BaseModel):
 
     ADMIN = "admin"
-    STREAMER = "streamer"
+    USER = "user"
 
     ROLE_CHOICES = [
         (ADMIN, "Admin"),
-        (STREAMER, "Streamer"),
+        (USER, "User"),
     ]
 
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='streamer')
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='user')

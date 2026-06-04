@@ -27,7 +27,7 @@ class VerifyEmailSerializer(serializers.Serializer):
         if pending_reg.verification_token != otp:
             raise BaseAPIException("Invalid OTP!")
 
-        role, _ = Role.objects.get_or_create(role=Role.STREAMER)
+        role, _ = Role.objects.get_or_create(role=Role.USER)
 
         user = CustomUser.objects.create_user(
             email=pending_reg.email,
