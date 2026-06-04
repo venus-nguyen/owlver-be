@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     full_name = serializers.CharField()
     phone_number = serializers.CharField()
-    avatar_url = serializers.ImageField()
+    avatar_url = serializers.CharField()
     bio = serializers.CharField()
 
     class Meta:
