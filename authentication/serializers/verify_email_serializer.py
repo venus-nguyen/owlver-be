@@ -15,7 +15,6 @@ class VerifyEmailSerializer(serializers.Serializer):
         email = attrs.get('email')
         otp = attrs.get('otp')
 
-        # Find pending registration
         try:
             pending_reg = PendingRegistration.objects.get(email=email)
         except PendingRegistration.DoesNotExist:

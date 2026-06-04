@@ -26,7 +26,7 @@ class RegisterSerializer(serializers.Serializer):
     def create(self, validated_data):
         otp, expiry_time = auth_service.generate_otp()
         expiry_minutes = int((expiry_time - datetime.now(timezone.utc)).total_seconds() // 60)
-        
+
         pending_reg = PendingRegistration.objects.create(
             email=validated_data['email'],
             full_name=validated_data['full_name'],
@@ -34,7 +34,7 @@ class RegisterSerializer(serializers.Serializer):
             verification_token=otp,
             verification_token_expires_at=expiry_time,
         )
-        
+
         email_heading = "Verify Your Account"
         action_description = "Thank you for registering with OwlVerse. Please use the verification code below to complete your sign-up process and activate your AI stream dashboard."
         mail_service.send_otp_email(validated_data['email'], otp, expiry_minutes, email_heading, action_description)

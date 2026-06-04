@@ -10,9 +10,9 @@ class RegisterView(APIView):
     @extend_schema(
         summary="Register a user",
         description="""
-    Register a user with email.
-    Returns a success message.
-    """,
+            Register a user with email.
+            Returns a success message.
+            """,
         request=RegisterSerializer,
         responses={
             status.HTTP_201_CREATED: OpenApiResponse(description="User registered successfully"),
