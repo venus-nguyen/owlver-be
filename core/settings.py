@@ -15,6 +15,7 @@ import os
 import dotenv
 import sentry_sdk
 from datetime import timedelta
+import cloudinary
 
 dotenv.load_dotenv()
 
@@ -49,9 +50,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # internal apps
-
+    "authentication",
+    "cloudinary",
     # external apps
     "rest_framework",
+    "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     "drf_spectacular"
 ]
@@ -196,4 +199,11 @@ SENTRY_DSN = os.getenv("SENTRY_DSN")
 sentry_sdk.init(
     dsn=SENTRY_DSN,
     send_default_pii=True,
+)
+
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True,
 )
